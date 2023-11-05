@@ -2,6 +2,7 @@
 #define GAME_H
 #include <vector>
 #include <utility>
+#include <string>
 
 class Game{
     public:
@@ -16,13 +17,14 @@ class Game{
     private:
         int screenWidth;
         int screenHeight;
-        int acceleration;       //
-        int score;
+        float acceleration;       //
 
-        int birdY;
+        int score;
         int birdWidth;          //
         int birdHeight;         //
-        int birdVelocity;       //
+        float birdY;
+        float birdVelocity;       //
+        float theta;
 
         std::vector<std::pair<int ,int>> pipePositions;
         int pipeWidth;
@@ -32,11 +34,15 @@ class Game{
         bool gameOver;
 
         void generatePipes();
-        // void drawBird();
-        void drawPipe(int, int);
-        // bool checkCollision();
-        // void resetGame();
+        void drawTunnel();
+        void drawBird();
+        void drawPipe(int pos, int gap);
+        bool checkCollision();
+        void drawScore();
+        void drawStart();
 
 };
+
+void Rotate(float theta, std::vector<int> *pts);
 
 #endif //GAME_H
